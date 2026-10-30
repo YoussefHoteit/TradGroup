@@ -40,6 +40,11 @@ function renderShowroom() {
         ${collectionCard('Garden lighting', 'After dark', 'A new perspective on outdoor living.', '03')}
       </div>
       <div class="collection-foot"><span>Lighting inspiration, from inside to out.</span><span>20 categories. One considered collection.</span></div>
+      <section class="brand-spotlight reveal" aria-labelledby="brand-spotlight-title">
+        <div><span class="eyebrow" id="brand-spotlight-title">BRANDS IN OUR COLLECTION</span><p>Names behind the light.</p></div>
+        <div class="supplier-wordmark" aria-label="Konnice Electric">KONNICE<span>ELECTRIC</span></div>
+        <div class="brand-spotlight-copy"><p>Discover Konnice lighting<br>in the Trad Group collection.</p><a href="#/shop" class="text-link">Explore the collection <span>↗</span></a></div>
+      </section>
     </section>
 
     <section class="editorial">
