@@ -1,0 +1,12 @@
+node_modules/
+.sites-runtime/
+.sites-checkout/
+*.tar.gz
+*.log
+asset-index.json
+qa/
+hero-source.png
+prepare-assets.mjs
+contact-sheet.*
+refine-catalogue.mjs
+refine-ui.mjs
