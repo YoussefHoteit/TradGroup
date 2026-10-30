@@ -1,1 +1,11 @@
-{"name":"tradgroup","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"node server.mjs","start":"node server.mjs","check":"node --check dist/app.js"}}
+{
+  "name": "tradgroup",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check dist/app.js && node --check dist/showroom.js && node --check dist/navigation.js"
+  }
+}

@@ -1,0 +1,80 @@
+function renderShowroom() {
+  const featured = ['LED strips', 'Magnetic track lights', 'LED bulbs', 'Outdoor wall lights']
+    .map(category => products.find(product => product.category === category))
+    .filter(Boolean);
+
+  return `
+    <section class="hero">
+      <div class="hero-image"></div>
+      <div class="hero-content">
+        <span class="eyebrow">THE ART OF LIGHTING · LEBANON</span>
+        <h1>Light, with<br><em>intention.</em></h1>
+        <p>Beautiful spaces begin with considered light.<br>Discover a world of lighting and electrical essentials,<br>curated for the way you live, work and create.</p>
+        <div class="button-row">
+          <a class="button light" href="#/shop">Discover the collection <span>↗</span></a>
+          <a class="hero-text-link" href="#/contact">Your next project <span>↗</span></a>
+        </div>
+      </div>
+      <span class="hero-side-note">INDOOR / OUTDOOR / EVERY POSSIBILITY</span>
+      <div class="hero-bottom">
+        <a class="hero-scroll" href="#collections"><b>↓</b> A WORLD OF LIGHT AWAITS</a>
+        <div class="hero-caption"><span class="hero-index">01</span><div>A feeling, beautifully illuminated.<small>ARCHITECTURAL LIGHTING INSPIRATION</small></div></div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <span><b>↗</b> Delivery across Lebanon</span>
+      <span><b>✳</b> Wholesale & retail</span>
+      <span><b>⌁</b> Design & installation</span>
+      <span><b>◈</b> Indoor & outdoor</span>
+    </div>
+
+    <section class="section" id="collections">
+      <div class="section-heading reveal">
+        <div><span class="eyebrow">01 / THE COLLECTION</span><h2>Different spaces.<br><em>Endless possibilities.</em></h2></div>
+        <a href="#/shop" class="text-link">Explore all collections <span>↗</span></a>
+      </div>
+      <div class="collection-grid stagger">
+        ${collectionCard('Magnetic track lights', 'Architectural light', 'Shape the space. Set the scene.', '01')}
+        ${collectionCard('LED strips', 'Lines of light', 'Seamless. Subtle. Transformative.', '02')}
+        ${collectionCard('Garden lighting', 'After dark', 'A new perspective on outdoor living.', '03')}
+      </div>
+      <div class="collection-foot"><span>Lighting inspiration, from inside to out.</span><span>20 categories. One considered collection.</span></div>
+    </section>
+
+    <section class="editorial">
+      <div class="editorial-image reveal" role="img" aria-label="Concept Mediterranean interior with carefully layered warm lighting"></div>
+      <div class="editorial-copy reveal">
+        <span class="eyebrow">02 / THE TRAD GROUP APPROACH</span>
+        <h2>Every space<br>has a story.<br><em>Light tells it.</em></h2>
+        <p>The finishing detail. The first impression. The feeling of coming home. We bring together thoughtful lighting, electrical essentials and practical expertise to help you see the possibilities.</p>
+        <div class="editorial-features">
+          <div><h3>For the way you live</h3><p>Everyday essentials and atmospheric finishing touches.</p></div>
+          <div><h3>For the way you build</h3><p>Product supply and guidance for trade professionals.</p></div>
+        </div>
+        <a href="#/about" class="text-link">The story behind the light <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading reveal">
+        <div><span class="eyebrow">03 / CONSIDERED ESSENTIALS</span><h2>The details<br><em>make the difference.</em></h2></div>
+        <a href="#/shop" class="text-link">Find your next essential <span>↗</span></a>
+      </div>
+      <div class="featured-grid">${featured.map(product => card(product, 'In the collection')).join('')}</div>
+      <div class="collection-foot"><span>Catalogue retail prices in USD, including VAT. Wholesale enquiries welcome.</span><span>Availability confirmed by our team.</span></div>
+    </section>
+
+    ${lightLab()}
+
+    <section class="section">
+      <div class="section-heading reveal"><div><span class="eyebrow">04 / BEYOND THE PRODUCT</span><h2>From the first idea<br><em>to the final detail.</em></h2></div><p>Products, expertise and a practical understanding of what your project needs.</p></div>
+      <div class="services-grid">
+        ${service('01', 'Supply, at every scale.', 'A room to finish or a building to supply. Explore lighting and electrical essentials for homes, shops, hospitality and commercial spaces.')}
+        ${service('02', 'A considered approach.', 'Bring your ideas, plans or room dimensions. We can help with lighting design and installation, with scope tailored to your project.')}
+        ${service('03', 'Closer than you think.', 'From Maarakeh to projects across Lebanon. Our team confirms delivery arrangements, timing and cost for your location and order.')}
+      </div>
+    </section>
+    ${cta()}
+  `;
+}
