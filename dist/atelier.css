@@ -18,7 +18,7 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
 .skip { color: var(--ink); }
 .menu-open { overflow: hidden; }
 
-/* Translucent glass masthead with a section-aware foreground and tint. */
+/* The top masthead shares the hero artwork; scrolling reveals the glass state. */
 .header {
   --glass-fill: rgba(20, 25, 19, .16);
   --glass-edge: rgba(255, 245, 220, .16);
@@ -77,6 +77,33 @@ body:not(.is-home) main { padding-top: 0; }
 .header.over-light .nav-contact span { color: #8c7048; }
 .header.over-light .nav-contact:hover { background: #cfb383; }
 .header.over-light .menu-trigger span { background: #3e4436; }
+.header:not(.is-scrolled) {
+  background: #252a22;
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.header.over-light:not(.is-scrolled) { background: var(--paper); }
+.is-home .header:not(.is-scrolled) { background: #29281f; overflow: hidden; }
+.is-home .header:not(.is-scrolled)::before,
+.is-home .header:not(.is-scrolled)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--hero-height, 100svh);
+  pointer-events: none;
+}
+.is-home .header:not(.is-scrolled)::before {
+  z-index: -2;
+  background: #29281f url('assets/hero.webp') center / cover no-repeat;
+}
+.is-home .header:not(.is-scrolled)::after {
+  z-index: -1;
+  background: linear-gradient(90deg, #1117109e 0%, #13181135 50%, #15191008 78%), linear-gradient(0deg, #151a13b8 0%, transparent 35%, transparent 75%, #11181130);
+}
 .page-enter { animation: none; }
 
 /* The mobile navigation is a native modal: focus stays inside until closed. */
@@ -110,7 +137,7 @@ body:not(.is-home) main { padding-top: 0; }
 
 /* Full-bleed opening, with a clear primary action and a quiet second link. */
 .hero { height: 100svh; min-height: 730px; max-height: 1080px; background: #29281f; }
-.hero-image { background-position: center; animation-duration: 2s; }
+.hero-image { background-position: center; animation: none; }
 .hero:after { background: linear-gradient(90deg, #1117109e 0%, #13181135 50%, #15191008 78%), linear-gradient(0deg, #151a13b8 0%, transparent 35%, transparent 75%, #11181130); }
 .hero-content { padding: clamp(185px, 25svh, 285px) 6.5% 145px; max-width: 1050px; }
 .hero .eyebrow { font-size: 9px; letter-spacing: .24em; color: #e4d5b9; gap: 13px; }
@@ -419,6 +446,8 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
   body:not(.is-home) main { padding-top: 0; }
   .hero { height: 100svh; min-height: 700px; max-height: 930px; }
   .hero-image { background-position: 62% center; }
+  .is-home .header:not(.is-scrolled)::before { background-position: 62% center; }
+  .is-home .header:not(.is-scrolled)::after { background: linear-gradient(90deg,#10170fb8,#10170f28),linear-gradient(0deg,#141c12db,transparent 40%,transparent 70%,#11190f60); }
   .hero:after { background: linear-gradient(90deg,#10170fb8,#10170f28),linear-gradient(0deg,#141c12db,transparent 40%,transparent 70%,#11190f60); }
   .hero-content { max-width: 100%; padding: clamp(155px,25svh,225px) 7% 145px; }
   .hero .eyebrow { font-size: 7px; letter-spacing: .19em; gap: 9px; }

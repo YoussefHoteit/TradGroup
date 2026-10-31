@@ -6,8 +6,10 @@
   let scrollFrame;
 
   function syncHeader() {
-    document.body.classList.toggle('is-home', Boolean(document.querySelector('.hero')));
-    header.classList.toggle('is-scrolled', window.scrollY > 35);
+    const hero = document.querySelector('.hero');
+    document.body.classList.toggle('is-home', Boolean(hero));
+    if (hero) header.style.setProperty('--hero-height', `${hero.offsetHeight}px`);
+    header.classList.toggle('is-scrolled', window.scrollY > 0);
     const sampleY = header.getBoundingClientRect().height / 2;
     const sampleX = window.innerWidth / 2;
     const darkSections = document.querySelectorAll('.hero, .ticker, .editorial, .inspiration-band, .page-intro, footer');
@@ -56,6 +58,7 @@
   }, { passive: true });
   new MutationObserver(syncHeader).observe(main, { childList: true });
   window.addEventListener('hashchange', syncHeader);
+  window.addEventListener('resize', syncHeader);
   window.matchMedia('(min-width: 961px)').addEventListener('change', event => {
     if (event.matches && menu.open) closeMenu();
   });
