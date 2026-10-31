@@ -18,8 +18,11 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
 .skip { color: var(--ink); }
 .menu-open { overflow: hidden; }
 
-/* Transparent masthead; the foreground adapts to the section beneath it. */
+/* Translucent glass masthead with a section-aware foreground and tint. */
 .header {
+  --glass-fill: rgba(20, 25, 19, .16);
+  --glass-edge: rgba(255, 245, 220, .16);
+  --glass-highlight: rgba(255, 255, 245, .08);
   position: fixed;
   inset: 0 0 auto;
   display: grid;
@@ -28,18 +31,15 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
   height: 84px;
   padding: 0 4.5%;
   color: #eeede5;
-  background: transparent;
+  background: linear-gradient(120deg, #ffffff09, #ffffff00 65%), var(--glass-fill);
   border: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-  transition: height .35s ease, color .2s ease;
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 24px #0000000b;
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  transition: height .35s ease, color .2s ease, background .25s ease;
 }
-.is-home .header:not(.is-scrolled) {
-  background: transparent;
-  backdrop-filter: none;
-  border: 0;
-}
-.header.is-scrolled { height: 70px; background: transparent; box-shadow: none; }
+.header.is-scrolled { height: 70px; --glass-fill: rgba(20, 25, 19, .22); }
 .brand { gap: 11px; width: fit-content; }
 .brand svg { width: 33px; height: 33px; stroke: #d0af75; stroke-width: 1.2; }
 .brand > span { font-size: 17px; font-weight: 600; letter-spacing: .14em; }
@@ -62,7 +62,12 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
 .menu-trigger span:last-child { width: 17px; margin-left: auto; }
 .menu-trigger:hover span:last-child { width: 23px; }
 body:not(.is-home) main { padding-top: 0; }
-.header.over-light { color: #252a22; }
+.header.over-light {
+  color: #252a22;
+  --glass-fill: rgba(245, 243, 234, .28);
+  --glass-edge: rgba(89, 79, 54, .12);
+  --glass-highlight: rgba(255, 255, 255, .38);
+}
 .header.over-light .brand svg { stroke: #90734d; }
 .header.over-light .brand small { color: #6e6f60; }
 .header.over-light .desktop-nav a, .header.over-light .nav-quote { color: #3e4436; }
