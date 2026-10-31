@@ -8,6 +8,14 @@
   function syncHeader() {
     document.body.classList.toggle('is-home', Boolean(document.querySelector('.hero')));
     header.classList.toggle('is-scrolled', window.scrollY > 35);
+    const sampleY = header.getBoundingClientRect().height / 2;
+    const sampleX = window.innerWidth / 2;
+    const darkSections = document.querySelectorAll('.hero, .ticker, .editorial, .inspiration-band, .page-intro, footer');
+    const overDark = [...darkSections].some(section => {
+      const bounds = section.getBoundingClientRect();
+      return bounds.top <= sampleY && bounds.bottom > sampleY && bounds.left <= sampleX && bounds.right >= sampleX;
+    });
+    header.classList.toggle('over-light', !overDark);
     const current = location.hash.split('?')[0] || '#/';
     document.querySelectorAll('.desktop-nav a, .menu-links a').forEach(link => {
       if (link.getAttribute('href') === current) link.setAttribute('aria-current', 'page');

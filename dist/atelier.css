@@ -18,7 +18,7 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
 .skip { color: var(--ink); }
 .menu-open { overflow: hidden; }
 
-/* A compact, image-integrated masthead with a solid scroll state. */
+/* Transparent masthead; the foreground adapts to the section beneath it. */
 .header {
   position: fixed;
   inset: 0 0 auto;
@@ -28,17 +28,18 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
   height: 84px;
   padding: 0 4.5%;
   color: #eeede5;
-  background: #1b1e1afc;
-  border-bottom: 1px solid #ffffff14;
-  backdrop-filter: blur(16px);
-  transition: height .35s ease, background .35s ease, box-shadow .35s ease;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  transition: height .35s ease, color .2s ease;
 }
 .is-home .header:not(.is-scrolled) {
-  background: linear-gradient(180deg, #11151072, #11151012);
+  background: transparent;
   backdrop-filter: none;
-  border-bottom-color: #ffffff24;
+  border: 0;
 }
-.header.is-scrolled { height: 70px; background: #191d19f5; box-shadow: 0 5px 30px #00000012; }
+.header.is-scrolled { height: 70px; background: transparent; box-shadow: none; }
 .brand { gap: 11px; width: fit-content; }
 .brand svg { width: 33px; height: 33px; stroke: #d0af75; stroke-width: 1.2; }
 .brand > span { font-size: 17px; font-weight: 600; letter-spacing: .14em; }
@@ -60,7 +61,17 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -
 .menu-trigger span { display: block; width: 23px; height: 1px; background: #eee8db; margin: 7px 0; transition: width .3s; }
 .menu-trigger span:last-child { width: 17px; margin-left: auto; }
 .menu-trigger:hover span:last-child { width: 23px; }
-body:not(.is-home) main { padding-top: 84px; }
+body:not(.is-home) main { padding-top: 0; }
+.header.over-light { color: #252a22; }
+.header.over-light .brand svg { stroke: #90734d; }
+.header.over-light .brand small { color: #6e6f60; }
+.header.over-light .desktop-nav a, .header.over-light .nav-quote { color: #3e4436; }
+.header.over-light .desktop-nav a:hover { color: #8c7048; }
+.header.over-light .nav-quote #quote-count { color: #8c7048; }
+.header.over-light .nav-contact { color: #3e4436; border-color: #9d865e99; background: transparent; }
+.header.over-light .nav-contact span { color: #8c7048; }
+.header.over-light .nav-contact:hover { background: #cfb383; }
+.header.over-light .menu-trigger span { background: #3e4436; }
 .page-enter { animation: none; }
 
 /* The mobile navigation is a native modal: focus stays inside until closed. */
@@ -233,7 +244,7 @@ body:not(.is-home) main { padding-top: 84px; }
 .project-cta .button { flex-shrink: 0; }
 
 /* Inner pages retain the same palette and navigation hierarchy. */
-.page-intro { padding: 58px 6.5% 64px; background: #252a22; color: #efecdf; border: 0; }
+.page-intro { padding: 142px 6.5% 64px; background: #252a22; color: #efecdf; border: 0; }
 .page-intro:after { width: 460px; height: 460px; right: 5%; top: -45%; border-color: #c9ab7533; box-shadow: 0 0 120px #c9ab7509; }
 .page-intro .breadcrumbs { color: #8f9983; font-size: 9px; margin-bottom: 30px; }
 .page-intro .eyebrow { color: #b8a27a; font-size: 8px; }
@@ -293,7 +304,7 @@ body:not(.is-home) main { padding-top: 84px; }
 .inspiration-details article { border-color: #c3bca7; }
 .inspiration-details .eyebrow { color: #a08b64; font-size: 8px; }
 .inspiration-details h3 { font-size: 28px; font-weight: 400; }
-.privacy { padding: 75px 6.5% 100px; }
+.privacy { padding: 159px 6.5% 100px; }
 .privacy > .eyebrow { color: #aa9367; }
 .privacy h1 { font-size: 62px; }
 .privacy h2 { font-size: 26px; }
@@ -355,7 +366,8 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
 @media (max-width: 960px) {
   .header { height: 80px; grid-template-columns: 1fr auto; padding: 0 5%; }
   .header.is-scrolled { height: 72px; }
-  body:not(.is-home) main { padding-top: 80px; }
+  body:not(.is-home) main { padding-top: 0; }
+  .page-intro { padding-top: 138px; }
   .desktop-nav { display: none; }
   .nav-actions { gap: 20px; }
   .menu-trigger { display: block; }
@@ -399,7 +411,7 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
   .menu-trigger { width: 28px; }
   .menu-trigger span { width: 22px; }
   .menu-trigger span:last-child { width: 15px; }
-  body:not(.is-home) main { padding-top: 72px; }
+  body:not(.is-home) main { padding-top: 0; }
   .hero { height: 100svh; min-height: 700px; max-height: 930px; }
   .hero-image { background-position: 62% center; }
   .hero:after { background: linear-gradient(90deg,#10170fb8,#10170f28),linear-gradient(0deg,#141c12db,transparent 40%,transparent 70%,#11190f60); }
@@ -473,7 +485,7 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
   .project-cta p { font-size: 10px; }
   .project-cta .eyebrow { font-size: 7px; line-height: 1.7; }
   .project-cta .button { margin-top: 25px; }
-  .page-intro { padding: 35px 7% 43px; }
+  .page-intro { padding: 107px 7% 43px; }
   .page-intro .breadcrumbs { font-size: 8px; margin-bottom: 25px; }
   .page-intro .eyebrow { font-size: 7px; }
   .page-intro h1 { font-size: 51px; margin: 20px 0; }
@@ -510,7 +522,7 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
   .faq h2 { font-size: 36px; }
   .faq summary { font-size: 12px; }
   .inspiration-details { grid-template-columns: 1fr; gap: 35px; }
-  .privacy { padding: 55px 7% 70px; }
+  .privacy { padding: 127px 7% 70px; }
   .privacy h1 { font-size: 43px; }
   .privacy p { font-size: 12px; }
   .product-detail-grid { grid-template-columns: 1fr; }
