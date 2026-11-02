@@ -37,10 +37,6 @@ function renderShowroom() {
           ${serviceItems}
         </div>
       </div>
-      <button class="ticker-toggle" type="button" data-ticker-toggle aria-label="Pause service carousel" aria-pressed="false">
-        <svg class="ui-icon ticker-pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v14M15 5v14"/></svg>
-        <svg class="ui-icon ticker-play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7V5Z"/></svg>
-      </button>
     </section>
 
     <section class="section" id="collections">
