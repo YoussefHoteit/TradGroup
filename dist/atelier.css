@@ -173,7 +173,17 @@ body:not(.is-home) main { padding-top: 0; }
 .text-link:hover span { transform: translate(3px,-3px); }
 
 /* A quiet service rail leads into the editorial collection. */
-.ticker { padding: 24px 6.5%; background: #20241e; color: #bebfae; border-bottom: 1px solid #ffffff0e; font-size: 8px; letter-spacing: .1em; }
+.ticker { position: relative; display: block; overflow: hidden; padding: 0; background: #20241e; color: #bebfae; border-bottom: 1px solid #ffffff0e; font-size: 8px; letter-spacing: .1em; }
+.ticker-track { display: flex; width: max-content; animation: serviceLoop 32s linear infinite; }
+.ticker-group { display: flex; flex: none; align-items: center; justify-content: space-around; min-width: 100vw; gap: clamp(48px, 7vw, 120px); padding: 24px clamp(28px, 4.5vw, 80px); }
+.ticker-group > span { flex: none; white-space: nowrap; }
+.ticker.is-paused .ticker-track { animation-play-state: paused; }
+.ticker-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #b69b7040; border-radius: 50%; background: #20241e; color: #b69b70; box-shadow: 0 0 18px 16px #20241e; }
+.ticker-toggle .ui-icon { width: 16px; height: 16px; }
+.ticker-toggle .ticker-play-icon, .ticker.is-paused .ticker-pause-icon { display: none; }
+.ticker.is-paused .ticker-play-icon { display: block; }
+@keyframes serviceLoop { to { transform: translateX(-50%); } }
+@media (hover: hover) { .ticker-track:hover { animation-play-state: paused; } }
 .ticker b { font-size: 15px; color: #b69b70; }
 .section { padding: 105px 6.5%; }
 .section-heading { margin-bottom: 44px; gap: 30px; }
@@ -469,7 +479,8 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
   .hero-caption .hero-index { font-size: 27px; }
   .hero-caption > div { font-size: 8px; line-height: 1.5; }
   .hero-caption small { font-size: 6px; letter-spacing: .025em; margin-top: 4px; }
-  .ticker { padding: 18px 7%; gap: 12px 20px; font-size: 7px; letter-spacing: .04em; }
+  .ticker { padding: 0; font-size: 7px; letter-spacing: .04em; }
+  .ticker-group { gap: 40px; padding: 20px 24px; }
   .ticker span { gap: 7px; }
   .ticker b { font-size: 13px; }
   .section { padding: 44px 7%; }
@@ -619,6 +630,10 @@ footer { background: #1a1e19; color: #e9e5d6; padding: 60px 6.5% 25px; }
   .hero-caption .hero-index { font-size: 23px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .ticker-track { width: 100%; animation: none; }
+  .ticker-group { flex: 1; min-width: 0; flex-wrap: wrap; justify-content: center; gap: 16px 32px; }
+  .ticker-group[aria-hidden="true"], .ticker-toggle { display: none; }
+  .ticker-group > span { white-space: normal; }
   .hero-image, .mobile-nav[open] { animation: none; }
   .reveal { opacity: 1; transform: none; }
   .button, .button > span, .collection-card:before, .header { transition: none; }

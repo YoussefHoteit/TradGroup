@@ -17,6 +17,12 @@
   }
 
   main.addEventListener('click', event => {
+    const toggle = event.target.closest('[data-ticker-toggle]');
+    if (toggle) {
+      const paused = toggle.closest('.ticker').classList.toggle('is-paused');
+      toggle.setAttribute('aria-pressed', String(paused));
+      toggle.setAttribute('aria-label', `${paused ? 'Play' : 'Pause'} service carousel`);
+    }
     const button = event.target.closest('[data-collection-step]');
     const rail = document.getElementById('home-collections');
     if (!button || !rail) return;

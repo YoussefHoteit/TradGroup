@@ -2,6 +2,12 @@ function renderShowroom() {
   const featured = ['LED strips', 'Magnetic track lights', 'LED bulbs', 'Outdoor wall lights']
     .map(category => products.find(product => product.category === category))
     .filter(Boolean);
+  const serviceItems = `
+    <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></b> Delivery across Lebanon</span>
+    <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5"/></svg></b> Wholesale & retail</span>
+    <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 15 6-6 6 6 6-6"/></svg></b> Design & installation</span>
+    <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 9 9-9 9-9-9 9-9Zm0 5 4 4-4 4-4-4 4-4Z"/></svg></b> Indoor & outdoor</span>
+  `;
 
   return `
     <section class="hero">
@@ -22,12 +28,20 @@ function renderShowroom() {
       </div>
     </section>
 
-    <div class="ticker">
-      <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></b> Delivery across Lebanon</span>
-      <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5"/></svg></b> Wholesale & retail</span>
-      <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 15 6-6 6 6 6-6"/></svg></b> Design & installation</span>
-      <span><b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 9 9-9 9-9-9 9-9Zm0 5 4 4-4 4-4-4 4-4Z"/></svg></b> Indoor & outdoor</span>
-    </div>
+    <section class="ticker" aria-label="Trad Group services">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          ${serviceItems}
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+          ${serviceItems}
+        </div>
+      </div>
+      <button class="ticker-toggle" type="button" data-ticker-toggle aria-label="Pause service carousel" aria-pressed="false">
+        <svg class="ui-icon ticker-pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v14M15 5v14"/></svg>
+        <svg class="ui-icon ticker-play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7V5Z"/></svg>
+      </button>
+    </section>
 
     <section class="section" id="collections">
       <div class="section-heading reveal">
