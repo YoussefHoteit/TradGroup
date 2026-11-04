@@ -53,7 +53,7 @@ function renderShowroom() {
         <span>Swipe to explore <span id="collection-position">01 / 03</span></span>
         <div><button type="button" data-collection-step="-1" aria-label="Previous lighting collection" aria-controls="home-collections" disabled><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H4m6-6-6 6 6 6"/></svg></button><button type="button" data-collection-step="1" aria-label="Next lighting collection" aria-controls="home-collections"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button></div>
       </div>
-      <div class="collection-foot"><span>Lighting inspiration, from inside to out.</span><span>20 categories. One considered collection.</span></div>
+      <div class="collection-foot"><span>Lighting inspiration, from inside to out.</span><span>${categories.length} categories. One considered collection.</span></div>
       <section class="brand-spotlight reveal" aria-labelledby="brand-spotlight-title">
         <div><span class="eyebrow" id="brand-spotlight-title">BRANDS IN OUR COLLECTION</span><p>Names behind the light.</p></div>
         <div class="supplier-wordmark" aria-label="Konnice Electric">KONNICE<span>ELECTRIC</span></div>

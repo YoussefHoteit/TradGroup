@@ -15,7 +15,7 @@ Open `http://127.0.0.1:4317`.
 ## Website
 
 - Home, shop, inspiration, company story, contact and privacy pages.
-- Full catalogue: 191 product families, 290 option rows and 20 categories.
+- Full catalogue: 296 product families, 405 option rows and 24 categories.
 - Product search, category filters, price sorting and pagination.
 - Product option details, quantities and a quote list saved in the visitor's browser.
 - Downloadable product lists and project enquiries.
@@ -24,9 +24,13 @@ Open `http://127.0.0.1:4317`.
 
 ## Catalogue and enquiries
 
-`dist/catalogue.json` contains a selected export of the owner-updated catalogue workbook dated 14 October 2026. Listed prices are USD retail prices including VAT. The website does not represent live stock; wholesale prices, availability, delivery and installation are confirmed separately by the store.
+`dist/catalogue.json` contains a selected export of the owner-updated lighting catalogue workbook dated 14 October 2026, plus the verified Konnice switches and sockets supplement from May 2026. The supplement adds 105 families and 115 codes across Electrical switches, Electrical sockets, Switch plates and Switch accessories. Listed prices are USD retail prices including VAT. The website does not represent live stock; wholesale prices, availability, delivery and installation are confirmed separately by the store.
 
-Product images are extracted from the supplied lighting catalogue and illustrate product families. Exact model information follows the selected option code. Architectural imagery is illustrative, rather than a completed client project.
+Switches and sockets are priced by full pack, with the pack size shown beside each price and quantity field. Pack sizes, VAT and the corrected 80-piece NH-303-W pack follow the owner-confirmed sales agent data.
+
+To refresh the supplement after its product photos have been added, run `node tools/import-switches.mjs <path-to-switches-catalogue.json>`. The importer checks pack prices, duplicate codes and required images while preserving the existing lighting records.
+
+Product images are extracted from the supplied lighting and switches catalogues. Lighting images illustrate product families; supplement images show their corresponding catalogue entries. Exact model information follows the selected option code. Architectural imagery is illustrative, rather than a completed client project.
 
 The enquiry form prepares a text file locally. It does not send a message or create an order. Add a verified business contact or enquiry backend before enabling direct submission. No sales agent credentials, customer history or campaign database is included.
 
